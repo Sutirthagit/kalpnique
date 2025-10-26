@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalpnique - Creative Design Studio</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Styles & Font Definitions -->
+    <style>
+      body {
+        font-family: "Archivo Narrow", sans-serif;
+        background-color: #000;
+        color: #f0f0f0;
+      }
+      .font-julius {
+        font-family: "Julius Sans One", sans-serif;
+      }
+      .font-archivo {
+        font-family: "Archivo Narrow", sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #fde047; /* Tailwind yellow-300 */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #facc15; /* Tailwind yellow-400 */
+      }
+
+      /* Animation Class */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+          transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Mobile menu transition */
+      #mobile-menu {
+        transition: transform 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <!-- Header & Navigation -->
+    <header class="bg-yellow-300 text-black sticky top-0 z-50 shadow-lg">
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#home" class="font-julius text-3xl font-bold">Kalpnique</a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a
+            href="#home"
+            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            >Home</a
+          >
+          <a
+            href="#services"
+            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            >Services</a
+          >
+          <a
+            href="#gallery"
+            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            >Works</a
+          >
+          <a
+            href="#about"
+            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="font-archivo font-bold bg-black text-yellow-300 px-5 py-2 rounded-full hover:bg-gray-800 transition-all"
+            >Contact Us</a
+          >
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden z-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-8 h-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden fixed inset-0 bg-black/90 backdrop-blur-sm z-40 transform -translate-x-full flex flex-col items-center justify-center space-y-8"
+      >
+        <button id="close-btn" class="absolute top-6 right-6 text-yellow-300">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-10 h-10"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <a href="#home" class="mobile-link font-julius text-3xl text-yellow-300"
+          >Home</a
+        >
+        <a
+          href="#services"
+          class="mobile-link font-julius text-3xl text-yellow-300"
+          >Services</a
+        >
+        <a
+          href="#gallery"
+          class="mobile-link font-julius text-3xl text-yellow-300"
+          >Works</a
+        >
+        <a
+          href="#about"
+          class="mobile-link font-julius text-3xl text-yellow-300"
+          >About</a
+        >
+        <a
+          href="#contact"
+          class="mobile-link font-julius text-3xl text-yellow-300"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. Home Section -->
+      <section id="home" class="min-h-screen flex items-center bg-black px-6">
+        <div class="container mx-auto text-center">
+          <h1 class="font-julius text-5xl md:text-8xl text-white leading-tight">
+            CRAFTING
+            <span class="block text-yellow-300">VISUAL IDENTITIES</span>
+          </h1>
+          <p
+            class="font-archivo text-xl md:text-2xl text-gray-300 mt-6 max-w-2xl mx-auto"
+          >
+            We are a creative studio specializing in Brand identity, UI/UX
+            design, and unique visual solutions that make you stand out.
+          </p>
+          <a
+            href="#gallery"
+            class="mt-10 inline-block bg-yellow-300 text-black font-archivo font-bold text-lg px-10 py-4 rounded-full transition-all duration-300 hover:bg-yellow-400 hover:scale-105 transform"
+          >
+            View Our Work
+          </a>
+        </div>
+      </section>
+
+      <!-- 2. Services Section -->
+      <section id="services" class="py-24 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2
+            class="font-julius text-4xl md:text-5xl text-center text-yellow-300 mb-16 fade-in-up"
+          >
+            What We Provide
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service Card -->
+            <div
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+            >
+              <h3 class="font-julius text-2xl text-white mb-3">
+                Brand Identity
+              </h3>
+              <p class="font-archivo text-gray-400">
+                Complete branding solutions from logo design to brand guidelines
+                that define your voice.
+              </p>
+            </div>
+
+            <!-- Service Card -->
+            <div
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              style="transition-delay: 100ms"
+            >
+              <h3 class="font-julius text-2xl text-white mb-3">UI/UX Design</h3>
+              <p class="font-archivo text-gray-400">
+                Intuitive and beautiful user interfaces for web and mobile
+                applications.
+              </p>
+            </div>
+
+            <!-- Service Card -->
+            <div
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              style="transition-delay: 200ms"
+            >
+              <h3 class="font-julius text-2xl text-white mb-3">
+                Merchandise Design
+              </h3>
+              <p class="font-archivo text-gray-400">
+                Eye-catching designs for apparel, packaging, and promotional
+                products.
+              </p>
+            </div>
+
+            <!-- Service Card -->
+            <div
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+            >
+              <h3 class="font-julius text-2xl text-white mb-3">
+                Book & Print Design
+              </h3>
+              <p class="font-archivo text-gray-400">
+                Elegant layouts for books, magazines, brochures, and print
+                advertisements.
+              </p>
+            </div>
+
+            <!-- Service Card -->
+            <div
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              style="transition-delay: 100ms"
+            >
+              <h3 class="font-julius text-2xl text-white mb-3">
+                Product Photography
+              </h3>
+              <p class="font-archivo text-gray-400">
+                Crisp, professional photos that make your products shine in any
+                marketplace.
+              </p>
+            </div>
+
+            <!-- Service Card -->
+            <div
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              style="transition-delay: 200ms"
+            >
+              <h3 class="font-julius text-2xl text-white mb-3">Custom Works</h3>
+              <p class="font-archivo text-gray-400">
+                Have a unique idea? We love a challenge. Let's talk about your
+                custom creative needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Workflow Section -->
+      <section id="workflow" class="py-24 bg-black">
+        <div class="container mx-auto px-6">
+          <h2
+            class="font-julius text-4xl md:text-5xl text-center text-yellow-300 mb-20 fade-in-up"
+          >
+            Our Workflow
+          </h2>
+          <div class="relative max-w-3xl mx-auto">
+            <!-- Vertical Line -->
+            <div
+              class="absolute left-4 md:left-1/2 top-0 h-full w-0.5 bg-gray-700 -translate-x-1/2"
+              aria-hidden="true"
+            ></div>
+
+            <!-- Workflow Item 1 -->
+            <div class="relative mb-16 fade-in-up">
+              <div
+                class="absolute left-4 md:left-1/2 top-1 w-8 h-8 rounded-full bg-yellow-300 -translate-x-1/2 border-4 border-black ring-4 ring-yellow-300"
+              ></div>
+              <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 md:pr-12">
+                  <div
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                  >
+                    <span class="font-julius text-lg text-yellow-300"
+                      >01. Discover</span
+                    >
+                    <h3 class="font-julius text-2xl text-white mt-1">
+                      Discovery & Strategy
+                    </h3>
+                    <p class="font-archivo text-gray-400 mt-2">
+                      We start by deeply understanding your brand, audience, and
+                      goals to build a perfect strategy.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2"></div>
+              </div>
+            </div>
+
+            <!-- Workflow Item 2 -->
+            <div class="relative mb-16 fade-in-up">
+              <div
+                class="absolute left-4 md:left-1/2 top-1 w-8 h-8 rounded-full bg-yellow-300 -translate-x-1/2 border-4 border-black ring-4 ring-yellow-300"
+              ></div>
+              <div
+                class="md:flex md:items-center md:flex-row-reverse md:justify-between"
+              >
+                <div class="md:w-1/2 md:pl-12">
+                  <div
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                  >
+                    <span class="font-julius text-lg text-yellow-300"
+                      >02. Design</span
+                    >
+                    <h3 class="font-julius text-2xl text-white mt-1">
+                      Concept & Creation
+                    </h3>
+                    <p class="font-archivo text-gray-400 mt-2">
+                      Our creative team translates the strategy into stunning
+                      visuals, iterating with your feedback.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2"></div>
+              </div>
+            </div>
+
+            <!-- Workflow Item 3 -->
+            <div class="relative mb-16 fade-in-up">
+              <div
+                class="absolute left-4 md:left-1/2 top-1 w-8 h-8 rounded-full bg-yellow-300 -translate-x-1/2 border-4 border-black ring-4 ring-yellow-300"
+              ></div>
+              <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 md:pr-12">
+                  <div
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                  >
+                    <span class="font-julius text-lg text-yellow-300"
+                      >03. Refine</span
+                    >
+                    <h3 class="font-julius text-2xl text-white mt-1">
+                      Feedback & Revision
+                    </h3>
+                    <p class="font-archivo text-gray-400 mt-2">
+                      We refine the designs based on your input, ensuring every
+                      pixel is perfect and aligns with your vision.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2"></div>
+              </div>
+            </div>
+
+            <!-- Workflow Item 4 -->
+            <div class="relative mb-16 fade-in-up">
+              <div
+                class="absolute left-4 md:left-1/2 top-1 w-8 h-8 rounded-full bg-yellow-300 -translate-x-1/2 border-4 border-black ring-4 ring-yellow-300"
+              ></div>
+              <div
+                class="md:flex md:items-center md:flex-row-reverse md:justify-between"
+              >
+                <div class="md:w-1/2 md:pl-12">
+                  <div
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                  >
+                    <span class="font-julius text-lg text-yellow-300"
+                      >04. Deliver</span
+                    >
+                    <h3 class="font-julius text-2xl text-white mt-1">
+                      Final Delivery
+                    </h3>
+                    <p class="font-archivo text-gray-400 mt-2">
+                      You receive all the final, high-quality assets and files,
+                      ready to launch and impress the world.
+                    </p>
+                  </div>
+                </div>
+                <div class="md:w-1/2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Gallery Section -->
+      <section id="gallery" class="py-24 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2
+            class="font-julius text-4xl md:text-5xl text-center text-yellow-300 mb-16 fade-in-up"
+          >
+            Previous Works
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Gallery Item 1 -->
+            <div class="group relative overflow-hidden rounded-lg fade-in-up">
+              <img
+                src="product 1.png"
+                alt="Project One"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+              >
+                <div
+                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                  <h3 class="font-julius text-2xl text-yellow-300">
+                    Product Advertising
+                  </h3>
+                  <p class="font-archivo text-white">Cosmetics Ad</p>
+                </div>
+              </div>
+            </div>
+            <!-- Gallery Item 2 -->
+            <div
+              class="group relative overflow-hidden rounded-lg fade-in-up"
+              style="transition-delay: 100ms"
+            >
+              <img
+                src="shoe.png"
+                alt="Project Two"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+              >
+                <div
+                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                  <h3 class="font-julius text-2xl text-yellow-300">
+                    Product Advertising
+                  </h3>
+                  <p class="font-archivo text-white">Shoe Brand</p>
+                </div>
+              </div>
+            </div>
+            <!-- Gallery Item 3 -->
+            <div
+              class="group relative overflow-hidden rounded-lg fade-in-up"
+              style="transition-delay: 200ms"
+            >
+              <img
+                src="monster.png"
+                alt="Project Three"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+              >
+                <div
+                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                  <h3 class="font-julius text-2xl text-yellow-300">
+                    Product Advertising
+                  </h3>
+                  <p class="font-archivo text-white">Beverages</p>
+                </div>
+              </div>
+            </div>
+            <!-- Gallery Item 4 -->
+            <div class="group relative overflow-hidden rounded-lg fade-in-up">
+              <img
+                src="robo 4.2.png"
+                alt="Project Four"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+              >
+                <div
+                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                  <h3 class="font-julius text-2xl text-yellow-300">
+                    Charecter/Mascot Design
+                  </h3>
+                  <p class="font-archivo text-white">Robo Mascot</p>
+                </div>
+              </div>
+            </div>
+            <!-- Gallery Item 5 -->
+            <div
+              class="group relative overflow-hidden rounded-lg fade-in-up"
+              style="transition-delay: 100ms"
+            >
+              <img
+                src="chitraneshi.png"
+                alt="Project Five"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+              >
+                <div
+                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                  <h3 class="font-julius text-2xl text-yellow-300">
+                    Merchandise Design
+                  </h3>
+                  <p class="font-archivo text-white">Bengali Merchandise</p>
+                </div>
+              </div>
+            </div>
+            <!-- Gallery Item 6 -->
+            <div
+              class="group relative overflow-hidden rounded-lg fade-in-up"
+              style="transition-delay: 200ms"
+            >
+              <img
+                src="patchup.jpg"
+                alt="Project Six"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+              >
+                <div
+                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                  <h3 class="font-julius text-2xl text-yellow-300">
+                    Logo Design
+                  </h3>
+                  <p class="font-archivo text-white">Cafe Logo Design</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. About Us Section -->
+      <section id="about" class="py-24 bg-black">
+        <div class="container mx-auto px-6">
+          <h2
+            class="font-julius text-4xl md:text-5xl text-center text-yellow-300 mb-12 fade-in-up"
+          >
+            About Us
+          </h2>
+          <p
+            class="font-archivo text-lg text-gray-300 max-w-3xl mx-auto text-center mb-16 fade-in-up"
+            style="transition-delay: 100ms"
+          >
+            We are a team of passionate designers, artists, and strategists
+            united by a love for clean, impactful design. We believe that good
+            design is good business, and we're dedicated to helping our clients
+            succeed through visual excellence.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <!-- Founder -->
+            <div class="text-center fade-in-up" style="transition-delay: 200ms">
+              <img
+                src="dip1.png"
+                alt="Founder"
+                class="w-56 h-56 rounded-full object-cover mx-auto border-4 border-yellow-300 shadow-lg"
+              />
+              <h3 class="font-julius text-3xl text-white mt-6">
+                Diptanshu Laha
+              </h3>
+              <p class="font-archivo text-xl text-yellow-300">Creative Head</p>
+              <p class="font-archivo text-gray-400 mt-3 max-w-xs mx-auto">
+                With over two years in design, Diptanshu leads our creative
+                vision, specializing in Creative ideas, Unique design and
+                soothing aesthetics.
+              </p>
+            </div>
+
+            <!-- Co-Founder -->
+            <div class="text-center fade-in-up" style="transition-delay: 300ms">
+              <img
+                src="sutirtha1.png"
+                alt="Co-Founder"
+                class="w-56 h-56 rounded-full object-cover mx-auto border-4 border-yellow-300 shadow-lg"
+              />
+              <h3 class="font-julius text-3xl text-white mt-6">
+                Sutirtha Laha
+              </h3>
+              <p class="font-archivo text-xl text-yellow-300">Executive Head</p>
+              <p class="font-archivo text-gray-400 mt-3 max-w-xs mx-auto">
+                Sutirtha is the driving force behind the execution of Creative
+                Projects. With his lead the ideas, design and aesthetics comes
+                to life .
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Contact Us Section -->
+      <section id="contact" class="py-24 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2
+            class="font-julius text-4xl md:text-5xl text-center text-yellow-300 mb-16 fade-in-up"
+          >
+            Get In Touch
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+            <!-- Contact Info -->
+            <div class="fade-in-up" style="transition-delay: 100ms">
+              <h3 class="font-julius text-3xl text-white mb-6">
+                Let's build something
+                <span class="text-yellow-300">amazing</span> together.
+              </h3>
+              <p class="font-archivo text-lg text-gray-400 mb-8">
+                Have a project in mind? Fill out the form or email us directly.
+                We're excited to hear your ideas.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-5 h-5 text-yellow-300 mr-3"
+                  >
+                    <path
+                      d="M3 4a2 2 0 0 0-2 2v1.161l8.441 4.221a1.25 1.25 0 0 0 1.118 0L19 7.161V6a2 2 0 0 0-2-2H3Z"
+                    />
+                    <path
+                      d="M19 8.839l-7.77 3.885a2.75 2.75 0 0 1-2.46 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z"
+                    />
+                  </svg>
+                  <a
+                    href="mailto:kalpnique@gmail.com"
+                    class="font-archivo text-lg text-white hover:text-yellow-300"
+                    >kalpnique@gmail.com</a
+                  >
+                </div>
+                <div class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-5 h-5 text-yellow-300 mr-3"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-1.33.886c.03.091.06.183.092.275a11.46 11.46 0 0 0 4.569 4.569c.092.032.184.062.275.092l.886-1.33a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5h-1.5A13.5 13.5 0 0 1 2 3.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <a
+                    href="tel:+919883786166"
+                    class="font-archivo text-lg text-white hover:text-yellow-300"
+                    >+91 9883786166</a
+                  >
+                </div>
+                <div class="flex items-start">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-5 h-5 text-yellow-300 mr-3 mt-1"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m9.69 18.933-4.263-4.264a1 1 0 0 1 0-1.414l4.263-4.264a1 1 0 0 1 1.414 0l4.264 4.264a1 1 0 0 1 0 1.414l-4.264 4.264a1 1 0 0 1-1.414 0Zm-5.657-5.657-1.414-1.414a1 1 0 0 1 0-1.414l7.07-7.07a1 1 0 0 1 1.415 0l7.07 7.07a1 1 0 0 1 0 1.414l-1.414 1.414-5.656-5.656a1 1 0 0 0-1.415 0L4.032 13.276Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <p class="font-archivo text-lg text-white">
+                    Santoshpur, Kolkata<br />West Bengal, India, 700091
+                  </p>
+                </div>
+                <!-- <div class="flex items-start">
+                               <img src="behance (1).png" style="width: 20px; height: 20px; margin-right: 30px;" alt="">
+                                <p class="font-archivo text-lg text-white">Santoshpur, Kolkata<br>West Bengal, India,  700091</p>
+                            </div> -->
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form
+              id="contact-form"
+              class="bg-black p-8 rounded-lg border border-gray-800 space-y-6 fade-in-up"
+              style="transition-delay: 200ms"
+            >
+              <div>
+                <label
+                  for="name"
+                  class="font-archivo text-sm font-bold text-gray-300"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="font-archivo text-sm font-bold text-gray-300"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo"
+                />
+              </div>
+              <div>
+                <label
+                  for="service"
+                  class="font-archivo text-sm font-bold text-gray-300"
+                  >Interested Service</label
+                >
+                <select
+                  id="service"
+                  name="service"
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo appearance-none"
+                >
+                  <option>Select a service...</option>
+                  <option>Brand Identity</option>
+                  <option>UI/UX Design</option>
+                  <option>Merchandise Design</option>
+                  <option>Book & Print Design</option>
+                  <option>Product Photography</option>
+                  <option>Custom Work</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="font-archivo text-sm font-bold text-gray-300"
+                  >Message, What do you want from us and your Contact details</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo"
+                ></textarea>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  class="w-full bg-yellow-300 text-black font-archivo font-bold text-lg py-3 rounded-lg transition-all duration-300 hover:bg-yellow-400 hover:scale-105 transform"
+                >
+                  Send Message
+                </button>
+              </div>
+              <!-- <div id="form-message" class="font-archivo text-center"></div> -->
+            </form>
+            <script
+              type="text/javascript"
+              src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+            ></script>
+            <script type="text/javascript">
+              (function () {
+                emailjs.init({
+                  publicKey: "kdYxx0RAqZCMmQfOp", // Replace with your Public Key
+                });
+              })();
+            </script>
+            <script>
+              window.onload = function () {
+                document
+                  .getElementById('contact-form')
+                  .addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    console.log("Form submission attempted!");
+
+                    // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', 'FORM_REFERENCE')
+                    emailjs
+                      .sendForm("service_nvbmxpq", "template_x9cjkj4", this)
+                      .then(
+                        function () {
+                          alert("Message sent successfully!");
+                          // Optional: reset the form fields
+                          document.getElementById('contact-form').reset();
+                        },
+                        function (error) {
+                          console.log("FAILED...", error);
+                          alert("Message failed to send. Please try again.");
+                        }
+                      );
+                  });
+              };
+            </script>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 py-12">
+      <div class="container mx-auto px-6 text-center">
+        <a href="#home" class="font-julius text-3xl font-bold text-yellow-300"
+          >Kalpnique</a
+        >
+        <div class="flex justify-center space-x-6 mt-6 mb-6">
+          <!-- Add social media links here -->
+          <a
+            href="#"
+            class="text-gray-500 hover:text-yellow-300 transition-colors"
+          >
+            <img src="instagram.png" style="width: 30px; height: 30px" alt="" />
+          </a>
+          <a
+            href="#"
+            class="text-gray-500 hover:text-yellow-300 transition-colors"
+          >
+            <img src="linkedin.png" style="width: 30px; height: 30px" alt="" />
+          </a>
+          <a
+            href="#"
+            class="text-gray-500 hover:text-yellow-300 transition-colors"
+          >
+            <img src="behance.png" style="width: 30px; height: 30px" alt=""
+          /></a>
+        </div>
+        <p class="font-archivo text-gray-500 text-sm">
+          &copy; <span id="current-year"></span> Kalpnique . All Rights
+          Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript for Animations and Interactions -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Set Current Year in Footer
+        document.getElementById("current-year").textContent =
+          new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.remove("-translate-x-full");
+        });
+
+        closeBtn.addEventListener("click", () => {
+          mobileMenu.classList.add("-translate-x-full");
+        });
+
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("-translate-x-full");
+          });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            if (this.getAttribute("href").length > 1) {
+              e.preventDefault();
+              try {
+                const target = document.querySelector(
+                  this.getAttribute("href")
+                );
+                if (target) {
+                  target.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }
+              } catch (error) {
+                console.error("Error scrolling to anchor:", error);
+              }
+            }
+          });
+        });
+
+        // Scroll Animations (Fade In Up)
+        const elementsToFade = document.querySelectorAll(".fade-in-up");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px", // Start animation a bit before it's fully in view
+          }
+        );
+
+        elementsToFade.forEach((el) => {
+          observer.observe(el);
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById("contact-form");
+        const formMessage = document.getElementById("form-message");
+
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // You would typically send this data to a server
+          // For this demo, we'll just show a success message
+
+          formMessage.textContent = "Thank you! Your message has been sent.";
+          formMessage.className = "font-archivo text-center text-green-400";
+
+          contactForm.reset();
+
+          setTimeout(() => {
+            formMessage.textContent = "";
+          }, 5000);
+        });
+      });
+    </script>
+  </body>
+</html>
