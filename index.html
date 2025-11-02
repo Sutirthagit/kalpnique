@@ -6,7 +6,6 @@
     <title>Kalpnique - Creative Design Studio</title>
     <link rel="icon" type="image/png" href="favicon.png" />
 
-
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -24,6 +23,7 @@
         font-family: "Archivo Narrow", sans-serif;
         background-color: #000;
         color: #f0f0f0;
+        overflow-x: hidden; /* Prevent horizontal scroll from animations */
       }
       .font-julius {
         font-family: "Julius Sans One", sans-serif;
@@ -48,7 +48,7 @@
         background: #facc15; /* Tailwind yellow-400 */
       }
 
-      /* Animation Class */
+      /* Base Animation Class */
       .fade-in-up {
         opacity: 0;
         transform: translateY(30px);
@@ -59,11 +59,141 @@
         opacity: 1;
         transform: translateY(0);
       }
-
+      
       /* Mobile menu transition */
       #mobile-menu {
         transition: transform 0.3s ease-in-out;
       }
+      
+      /* --- NEW ANIMATIONS --- */
+      
+      /* Hero Background Slideshow */
+      #hero-bg-slider .hero-bg-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        transform: scale(1.1); /* Start slightly zoomed in */
+        animation: kenBurns 20s infinite;
+      }
+      
+      #hero-bg-slider .hero-bg-slide.active {
+        opacity: 1;
+      }
+      
+      /* Staggered animation delays for slideshow */
+      #hero-bg-slider .hero-bg-slide:nth-child(2) { animation-delay: 5s; }
+      #hero-bg-slider .hero-bg-slide:nth-child(3) { animation-delay: 10s; }
+      #hero-bg-slider .hero-bg-slide:nth-child(4) { animation-delay: 15s; }
+
+      @keyframes kenBurns {
+        0%, 100% {
+          transform: scale(1.1) rotate(0.5deg);
+        }
+        50% {
+          transform: scale(1) rotate(-0.5deg);
+        }
+      }
+
+      /* Hero Text Staggered Animation */
+      .animate-hero-text > span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: heroTextFade 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+      }
+      
+      .animate-hero-text-2 {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: heroTextFade 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        animation-delay: 0.6s;
+      }
+      
+      .animate-hero-text-3 {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: heroTextFade 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        animation-delay: 0.8s;
+      }
+
+      /* NEW CLASS */
+      .animate-hero-text-4 {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: heroTextFade 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        animation-delay: 1s; /* Later delay */
+      }
+
+      @keyframes heroTextFade {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Artistic Floating Shapes */
+      .shape {
+        position: absolute;
+        z-index: 5;
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: pulse 4s infinite ease-in-out;
+      }
+      .shape-1 {
+        width: 150px;
+        height: 150px;
+        background: #fde047;
+        top: 20%;
+        left: 10%;
+      }
+      .shape-2 {
+        width: 80px;
+        height: 80px;
+        border: 4px solid #fde047;
+        bottom: 15%;
+        right: 15%;
+        animation-delay: 2s;
+      }
+      .shape-3 {
+        width: 50px;
+        height: 50px;
+        background: #fde047;
+        top: 30%;
+        right: 25%;
+        animation-delay: 1s;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(0.9); opacity: 0.1; }
+        50% { transform: scale(1.1); opacity: 0.15; }
+      }
+      
+      /* Gallery Overlay Animation */
+      .gallery-overlay-text {
+        transform: translateY(20px);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+      .group:hover .gallery-overlay-text {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
+      /* About Us Image Float */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+      }
+      .hover-float:hover {
+        animation: float 3s ease-in-out infinite;
+      }
+      
     </style>
   </head>
   <body class="bg-black">
@@ -78,27 +208,27 @@
         <div class="hidden md:flex space-x-6 items-center">
           <a
             href="#home"
-            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            class="font-archivo font-bold hover:text-gray-700 tracking-wide hover:tracking-wider transition-all"
             >Home</a
           >
           <a
             href="#services"
-            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            class="font-archivo font-bold hover:text-gray-700 tracking-wide hover:tracking-wider transition-all"
             >Services</a
           >
           <a
             href="#gallery"
-            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            class="font-archivo font-bold hover:text-gray-700 tracking-wide hover:tracking-wider transition-all"
             >Works</a
           >
           <a
             href="#about"
-            class="font-archivo font-bold hover:text-gray-700 transition-colors"
+            class="font-archivo font-bold hover:text-gray-700 tracking-wide hover:tracking-wider transition-all"
             >About</a
           >
           <a
             href="#contact"
-            class="font-archivo font-bold bg-black text-yellow-300 px-5 py-2 rounded-full hover:bg-gray-800 transition-all"
+            class="font-archivo font-bold bg-black text-yellow-300 px-5 py-2 rounded-full hover:bg-gray-800 transition-all hover:scale-105"
             >Contact Us</a
           >
         </div>
@@ -171,21 +301,65 @@
 
     <main>
       <!-- 1. Home Section -->
-      <section id="home" class="min-h-screen flex items-center bg-black px-6">
-        <div class="container mx-auto text-center">
-          <h1 class="font-julius text-5xl md:text-8xl text-white leading-tight">
+      <section
+        id="home"
+        class="min-h-screen relative flex items-center px-6 overflow-hidden"
+      >
+        <!-- Background Slideshow -->
+        <div id="hero-bg-slider" class="absolute inset-0 z-0">
+          <div
+            class="hero-bg-slide active"
+            style="background-image: url('product 1.png')"
+          ></div>
+          <div
+            class="hero-bg-slide"
+            style="background-image: url('shoe.png')"
+          ></div>
+          <div
+            class="hero-bg-slide"
+            style="background-image: url('monster.png')"
+          ></div>
+           <div
+            class="hero-bg-slide"
+            style="background-image: url('robo 4.2.png')"
+          ></div>
+        </div>
+
+        <!-- Overlay for text readability -->
+        <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+        
+        <!-- Artistic Shapes -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+
+        <div class="container mx-auto text-center relative z-20" >
+          <h1
+            class="animate-hero-text font-julius text-5xl md:text-8xl text-white leading-tight"
+          >
             CRAFTING
             <span class="block text-yellow-300">VISUAL IDENTITIES</span>
           </h1>
           <p
-            class="font-archivo text-xl md:text-2xl text-gray-300 mt-6 max-w-2xl mx-auto"
+            class="animate-hero-text-2 font-archivo text-xl md:text-2xl text-gray-300 mt-6 max-w-2xl mx-auto" style="padding-bottom: 50px;"
           >
             We are a creative studio specializing in Brand identity, UI/UX
             design, and unique visual solutions that make you stand out.
           </p>
+
+          <!-- NEW IMAGE ELEMENT
+          <div class="animate-hero-text-3 my-8 flex justify-center">
+            <img
+              src="https://images.unsplash.com/photo-1572044162441-c1a3d35795b7?fit=crop&w=300&q=80"
+              alt="Artistic Design Element"
+              class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full border-4 border-yellow-300 shadow-xl opacity-80"
+            />
+          </div>
+          END NEW IMAGE ELEMENT -->
+
           <a
             href="#gallery"
-            class="mt-10 inline-block bg-yellow-300 text-black font-archivo font-bold text-lg px-10 py-4 rounded-full transition-all duration-300 hover:bg-yellow-400 hover:scale-105 transform"
+            class="animate-hero-text-4 mt-2 mb-8 md:mt-0 inline-block bg-yellow-300 text-black font-archivo font-bold text-lg px-10 py-4 rounded-full transition-all duration-300 hover:bg-yellow-400 hover:scale-105 transform"
           >
             View Our Work
           </a>
@@ -203,7 +377,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Service Card -->
             <div
-              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up hover:-translate-y-2"
             >
               <h3 class="font-julius text-2xl text-white mb-3">
                 Brand Identity
@@ -216,7 +390,7 @@
 
             <!-- Service Card -->
             <div
-              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up hover:-translate-y-2"
               style="transition-delay: 100ms"
             >
               <h3 class="font-julius text-2xl text-white mb-3">UI/UX Design</h3>
@@ -228,7 +402,7 @@
 
             <!-- Service Card -->
             <div
-              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up hover:-translate-y-2"
               style="transition-delay: 200ms"
             >
               <h3 class="font-julius text-2xl text-white mb-3">
@@ -242,7 +416,7 @@
 
             <!-- Service Card -->
             <div
-              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up hover:-translate-y-2"
             >
               <h3 class="font-julius text-2xl text-white mb-3">
                 Book & Print Design
@@ -255,7 +429,7 @@
 
             <!-- Service Card -->
             <div
-              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up hover:-translate-y-2"
               style="transition-delay: 100ms"
             >
               <h3 class="font-julius text-2xl text-white mb-3">
@@ -269,7 +443,7 @@
 
             <!-- Service Card -->
             <div
-              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up"
+              class="bg-black p-8 rounded-lg border border-gray-800 transition-all duration-300 hover:border-yellow-300 hover:shadow-2xl hover:shadow-yellow-300/10 fade-in-up hover:-translate-y-2"
               style="transition-delay: 200ms"
             >
               <h3 class="font-julius text-2xl text-white mb-3">Custom Works</h3>
@@ -305,7 +479,7 @@
               <div class="md:flex md:items-center md:justify-between">
                 <div class="md:w-1/2 md:pr-12">
                   <div
-                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0 transition-all duration-300 hover:shadow-yellow-300/10 hover:border-yellow-300/50 hover:scale-[1.02]"
                   >
                     <span class="font-julius text-lg text-yellow-300"
                       >01. Discover</span
@@ -333,7 +507,7 @@
               >
                 <div class="md:w-1/2 md:pl-12">
                   <div
-                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0 transition-all duration-300 hover:shadow-yellow-300/10 hover:border-yellow-300/50 hover:scale-[1.02]"
                   >
                     <span class="font-julius text-lg text-yellow-300"
                       >02. Design</span
@@ -359,7 +533,7 @@
               <div class="md:flex md:items-center md:justify-between">
                 <div class="md:w-1/2 md:pr-12">
                   <div
-                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0 transition-all duration-300 hover:shadow-yellow-300/10 hover:border-yellow-300/50 hover:scale-[1.02]"
                   >
                     <span class="font-julius text-lg text-yellow-300"
                       >03. Refine</span
@@ -387,7 +561,7 @@
               >
                 <div class="md:w-1/2 md:pl-12">
                   <div
-                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0"
+                    class="bg-gray-900 border border-gray-800 p-6 rounded-lg ml-12 md:ml-0 transition-all duration-300 hover:shadow-yellow-300/10 hover:border-yellow-300/50 hover:scale-[1.02]"
                   >
                     <span class="font-julius text-lg text-yellow-300"
                       >04. Deliver</span
@@ -418,18 +592,18 @@
           </h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Gallery Item 1 -->
-            <div class="group relative overflow-hidden rounded-lg fade-in-up">
+            <div
+              class="group relative overflow-hidden rounded-lg fade-in-up shadow-lg"
+            >
               <img
                 src="product 1.png"
                 alt="Project One"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
               />
               <div
-                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-end p-6"
               >
-                <div
-                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                >
+                <div class="gallery-overlay-text">
                   <h3 class="font-julius text-2xl text-yellow-300">
                     Product Advertising
                   </h3>
@@ -439,20 +613,18 @@
             </div>
             <!-- Gallery Item 2 -->
             <div
-              class="group relative overflow-hidden rounded-lg fade-in-up"
+              class="group relative overflow-hidden rounded-lg fade-in-up shadow-lg"
               style="transition-delay: 100ms"
             >
               <img
                 src="shoe.png"
                 alt="Project Two"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
               />
               <div
-                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-end p-6"
               >
-                <div
-                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                >
+                <div class="gallery-overlay-text">
                   <h3 class="font-julius text-2xl text-yellow-300">
                     Product Advertising
                   </h3>
@@ -462,20 +634,18 @@
             </div>
             <!-- Gallery Item 3 -->
             <div
-              class="group relative overflow-hidden rounded-lg fade-in-up"
+              class="group relative overflow-hidden rounded-lg fade-in-up shadow-lg"
               style="transition-delay: 200ms"
             >
               <img
                 src="monster.png"
                 alt="Project Three"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
               />
               <div
-                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-end p-6"
               >
-                <div
-                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                >
+                <div class="gallery-overlay-text">
                   <h3 class="font-julius text-2xl text-yellow-300">
                     Product Advertising
                   </h3>
@@ -484,18 +654,18 @@
               </div>
             </div>
             <!-- Gallery Item 4 -->
-            <div class="group relative overflow-hidden rounded-lg fade-in-up">
+            <div
+              class="group relative overflow-hidden rounded-lg fade-in-up shadow-lg"
+            >
               <img
                 src="robo 4.2.png"
                 alt="Project Four"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
               />
               <div
-                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-end p-6"
               >
-                <div
-                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                >
+                <div class="gallery-overlay-text">
                   <h3 class="font-julius text-2xl text-yellow-300">
                     Charecter/Mascot Design
                   </h3>
@@ -505,20 +675,18 @@
             </div>
             <!-- Gallery Item 5 -->
             <div
-              class="group relative overflow-hidden rounded-lg fade-in-up"
+              class="group relative overflow-hidden rounded-lg fade-in-up shadow-lg"
               style="transition-delay: 100ms"
             >
               <img
                 src="chitraneshi.png"
                 alt="Project Five"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
               />
               <div
-                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-end p-6"
               >
-                <div
-                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                >
+                <div class="gallery-overlay-text">
                   <h3 class="font-julius text-2xl text-yellow-300">
                     Merchandise Design
                   </h3>
@@ -528,20 +696,18 @@
             </div>
             <!-- Gallery Item 6 -->
             <div
-              class="group relative overflow-hidden rounded-lg fade-in-up"
+              class="group relative overflow-hidden rounded-lg fade-in-up shadow-lg"
               style="transition-delay: 200ms"
             >
               <img
                 src="patchup.jpg"
                 alt="Project Six"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
               />
               <div
-                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center p-6"
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-500 flex items-end p-6"
               >
-                <div
-                  class="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                >
+                <div class="gallery-overlay-text">
                   <h3 class="font-julius text-2xl text-yellow-300">
                     Logo Design
                   </h3>
@@ -577,7 +743,7 @@
               <img
                 src="dip1.png"
                 alt="Founder"
-                class="w-56 h-56 rounded-full object-cover mx-auto border-4 border-yellow-300 shadow-lg"
+                class="w-56 h-56 rounded-full object-cover mx-auto border-4 border-yellow-300 shadow-lg transition-transform duration-300 hover-float"
               />
               <h3 class="font-julius text-3xl text-white mt-6">
                 Diptanshu Laha
@@ -595,7 +761,7 @@
               <img
                 src="sutirtha1.png"
                 alt="Co-Founder"
-                class="w-56 h-56 rounded-full object-cover mx-auto border-4 border-yellow-300 shadow-lg"
+                class="w-56 h-56 rounded-full object-cover mx-auto border-4 border-yellow-300 shadow-lg transition-transform duration-300 hover-float"
               />
               <h3 class="font-julius text-3xl text-white mt-6">
                 Sutirtha Laha
@@ -707,10 +873,6 @@
                     >Click Here To Whatsapp</a
                   >
                 </div>
-                <!-- <div class="flex items-start">
-                               <img src="behance (1).png" style="width: 20px; height: 20px; margin-right: 30px;" alt="">
-                                <p class="font-archivo text-lg text-white">Santoshpur, Kolkata<br>West Bengal, India,  700091</p>
-                            </div> -->
               </div>
             </div>
 
@@ -731,7 +893,7 @@
                   id="name"
                   name="name"
                   required
-                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo"
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-yellow-300 focus:ring-2 focus:ring-yellow-300 font-archivo transition-all duration-300"
                 />
               </div>
               <div>
@@ -745,7 +907,7 @@
                   id="email"
                   name="email"
                   required
-                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo"
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-yellow-300 focus:ring-2 focus:ring-yellow-300 font-archivo transition-all duration-300"
                 />
               </div>
               <div>
@@ -757,7 +919,7 @@
                 <select
                   id="service"
                   name="service"
-                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo appearance-none"
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-yellow-300 focus:ring-2 focus:ring-yellow-300 font-archivo appearance-none transition-all duration-300"
                 >
                   <option>Select a service...</option>
                   <option>Brand Identity</option>
@@ -772,14 +934,15 @@
                 <label
                   for="message"
                   class="font-archivo text-sm font-bold text-gray-300"
-                  >Message, What do you want from us and your Contact details</label
+                  >Message, What do you want from us and your Contact
+                  details</label
                 >
                 <textarea
                   id="message"
                   name="message"
                   rows="5"
                   required
-                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 font-archivo"
+                  class="w-full mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-yellow-300 focus:ring-2 focus:ring-yellow-300 font-archivo transition-all duration-300"
                 ></textarea>
               </div>
               <div>
@@ -790,7 +953,6 @@
                   Send Message
                 </button>
               </div>
-              <!-- <div id="form-message" class="font-archivo text-center"></div> -->
             </form>
             <script
               type="text/javascript"
@@ -804,29 +966,8 @@
               })();
             </script>
             <script>
-              window.onload = function () {
-                document
-                  .getElementById('contact-form')
-                  .addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    console.log("Form submission attempted!");
-
-                    // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', 'FORM_REFERENCE')
-                    emailjs
-                      .sendForm("service_nvbmxpq", "template_x9cjkj4", this)
-                      .then(
-                        function () {
-                          alert("Message sent successfully!");
-                          // Optional: reset the form fields
-                          document.getElementById('contact-form').reset();
-                        },
-                        function (error) {
-                          console.log("FAILED...", error);
-                          alert("Message failed to send. Please try again.");
-                        }
-                      );
-                  });
-              };
+              // Moved the EmailJS listener to the main DOMContentLoaded script
+              // to ensure it loads correctly with all other JS.
             </script>
           </div>
         </div>
@@ -843,19 +984,19 @@
           <!-- Add social media links here -->
           <a
             href="https://www.instagram.com/kalpnique_studio/"
-            class="text-gray-500 hover:text-yellow-300 transition-colors"
+            class="text-gray-500 hover:text-yellow-300 transition-all duration-300 transform hover:scale-125"
           >
             <img src="instagram.png" style="width: 30px; height: 30px" alt="" />
           </a>
           <a
             href="https://www.linkedin.com/in/kalpnique-creative-studio-510729390/"
-            class="text-gray-500 hover:text-yellow-300 transition-colors"
+            class="text-gray-500 hover:text-yellow-300 transition-all duration-300 transform hover:scale-125"
           >
             <img src="linkedin.png" style="width: 30px; height: 30px" alt="" />
           </a>
           <a
             href="https://www.behance.net/kalpnique"
-            class="text-gray-500 hover:text-yellow-300 transition-colors"
+            class="text-gray-500 hover:text-yellow-300 transition-all duration-300 transform hover:scale-125"
           >
             <img src="behance.png" style="width: 30px; height: 30px" alt=""
           /></a>
@@ -935,27 +1076,75 @@
         elementsToFade.forEach((el) => {
           observer.observe(el);
         });
+        
+        // --- NEW JAVASCRIPT ---
+        
+        // Hero Text Staggered Animation
+        // Wrap words in spans for animation
+        const heroText = document.querySelector('.animate-hero-text');
+        if (heroText) {
+            const textContent = heroText.textContent.trim();
+            const words = textContent.split(' ');
+            
+            // Re-create the structure, keeping the <span class="block">
+            if (words[0] === 'CRAFTING' && words[1] === 'VISUAL' && words[2] === 'IDENTITIES') {
+                heroText.innerHTML = `
+                    <span style="animation-delay: 0.2s">${words[0]}</span>
+                    <span class="block text-yellow-300" style="animation-delay: 0.4s">${words[1]} ${words[2]}</span>
+                `;
+            }
+        }
 
-        // Contact Form Submission
-        const contactForm = document.getElementById("contact-form");
-        const formMessage = document.getElementById("form-message");
+        // Hero Background Slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".hero-bg-slide");
+        const slideCount = slides.length;
 
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
+        if (slideCount > 0) {
+          // Set initial active slide
+          slides[0].classList.add("active");
+          
+          setInterval(() => {
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (currentSlide + 1) % slideCount;
+            slides[currentSlide].classList.add("active");
+          }, 5000); // Change slide every 5 seconds
+        }
+        
+        // EmailJS Contact Form
+        // Placed inside DOMContentLoaded to ensure the form element exists.
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                console.log("Form submission attempted!");
 
-          // You would typically send this data to a server
-          // For this demo, we'll just show a success message
+                // Check if emailjs is loaded
+                if (typeof emailjs === 'undefined') {
+                    alert('Error: Email service is not available. Please try again later.');
+                    console.error("emailjs is not defined.");
+                    return;
+                }
 
-          formMessage.textContent = "Thank you! Your message has been sent.";
-          formMessage.className = "font-archivo text-center text-green-400";
+                emailjs
+                  .sendForm("service_nvbmxpq", "template_x9cjkj4", this)
+                  .then(
+                    function () {
+                      alert("Message sent successfully!");
+                      contactForm.reset();
+                    },
+                    function (error) {
+                      console.log("FAILED...", error);
+                      alert("Message failed to send. Please try again.");
+                    }
+                  );
+              });
+        }
 
-          contactForm.reset();
-
-          setTimeout(() => {
-            formMessage.textContent = "";
-          }, 5000);
-        });
       });
     </script>
   </body>
 </html>
+
+
+
